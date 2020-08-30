@@ -1,4 +1,8 @@
 {
-    "presets": ["next/babel"],
-    "plugins": ["emotion", "perttier", "react", "react-hooks"]
+    "presets": [
+        "next/babel"
+    ],
+    "plugins": [
+        "emotion"
+    ]
 }

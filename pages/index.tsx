@@ -1,39 +1,85 @@
-import React, { FC } from 'react';
+import React, { useState, ChangeEventHandler, useCallback } from 'react';
 import { css } from 'emotion';
 
-import { links, Link } from '../data';
+import Page from '../components/Page';
+import Link from '../components/Link';
+
+import { links } from '../data';
+import { typography } from '../variables';
+import { TagContext } from '../context';
 
 const pageStyles = css`
-    min-height: 100vh;
+    max-width: 600px;
+    margin: auto;
 `;
 
-const titleStyles = css``;
+const titleStyles = css`
+    font-size: 80px;
+    text-transform: uppercase;
+
+    padding: 80px 0;
+`;
 
 const linksContainerStyles = css``;
 
-const linkStyles = css``;
+const linkStyles = css`
+    margin-bottom: 24px;
 
-const linkContainerStyles = css``;
+    &:last-child {
+        margin-bottom: 0;
+    }
+`;
 
-interface Props {
-    readonly link: Link;
-}
+const inputStyles = css`
+    border: none;
+    background: none;
+    outline: none;
 
-const Link: FC<Props> = ({ link }) => (
-    <div className={linkContainerStyles}>
-        <a className={linkStyles}></a>;
-    </div>
-);
+    ${typography.text20}
+
+    width: 100%;
+
+    border-bottom: 1px solid #ccc;
+`;
+
+const labelStyles = css`
+    ${typography.text16}
+
+    color: #aaa;
+`;
+
+const inputRowStyles = css`
+    margin-bottom: 32px;
+`;
 
 export default function Home() {
+    const [tagText, setTagText] = useState('');
+
+    const onInputChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+        (e) => setTagText(e.target.value),
+        []
+    );
+
     return (
-        <div className={pageStyles}>
-            <div className={titleStyles}>Awesome web</div>
-            <div className={linksContainerStyles}>
-                {links.map((l) => (
-                    <Link key={l.url} link={l} />
-                ))}
-            </div>
-        </div>
+        <TagContext.Provider value={{ tags: tagText }}>
+            <Page className={pageStyles}>
+                <div className={titleStyles}>Awesome web</div>
+                <div className={inputRowStyles}>
+                    <label className={labelStyles}>Enter tags with spaces</label>
+                    <input
+                        className={inputStyles}
+                        type="text"
+                        value={tagText}
+                        onChange={onInputChange}
+                    />
+                </div>
+
+                <div className={linksContainerStyles}>
+                    {links.map((l) => (
+                        <Link className={linkStyles} key={l.url} link={l} />
+                    ))}
+                </div>
+            </Page>
+        </TagContext.Provider>
     );
 }

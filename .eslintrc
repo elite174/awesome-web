@@ -12,7 +12,6 @@
     "plugins": [
         "emotion",
         "react",
-        "react-hooks",
-        "prettier"
+        "react-hooks"
     ]
 }
