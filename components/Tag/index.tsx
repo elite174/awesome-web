@@ -1,37 +1,36 @@
-import React, { FC, MouseEventHandler, useContext } from 'react';
+import React, { FC, useContext } from 'react';
+import { cx, css } from 'emotion';
+
+import { StoreContext } from '../../context';
 
 import { ClassNameProps } from '../../typings';
-import { cx, css } from 'emotion';
-import { TagContext } from '../../context';
 
-const buttonStyles = (active?: boolean) => css`
+const buttonStyles = css`
     background: none;
     border: none;
-    color: ${active ? '#f02244' : '#999'};
+    color: #999;
     cursor: pointer;
     outline: none;
 
     padding: 0;
+
+    &:hover {
+        color: #f02244;
+    }
 `;
 
 interface Props extends ClassNameProps {
     readonly text: string;
-    readonly active?: boolean;
-    readonly onTagClick?: MouseEventHandler;
 }
 
-export const TagView: FC<Props> = ({ text, active, onTagClick, className = '' }) => (
-    <button onClick={onTagClick} className={cx(buttonStyles(active), className)}>
-        # {text}
-    </button>
-);
+export const Tag: FC<Props> = ({ text, className = '' }) => {
+    const { dispatch } = useContext(StoreContext);
 
-const Tag: FC<Omit<Props, 'active'>> = ({ text, ...rest }) => {
-    const { tags } = useContext(TagContext);
-
-    const active = tags.indexOf(text) !== -1;
-
-    return <TagView active={active} text={text} {...rest} />;
+    return (
+        <button onClick={() => dispatch?.(text)} className={cx(buttonStyles, className)}>
+            # {text}
+        </button>
+    );
 };
 
 export default Tag;

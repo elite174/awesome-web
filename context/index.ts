@@ -1,7 +1,7 @@
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
 
-interface TagContext {
-    readonly tags: string;
+interface StoreContext {
+    readonly dispatch: Dispatch<SetStateAction<string>> | null;
 }
 
-export const TagContext = createContext<TagContext>({ tags: '' });
+export const StoreContext = createContext<StoreContext>({ dispatch: null });

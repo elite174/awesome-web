@@ -1,5 +1,3 @@
-import { url } from 'inspector';
-
 export interface Link {
     readonly description?: string;
     readonly url: string;
@@ -7,7 +5,7 @@ export interface Link {
 }
 
 export const links: Link[] = [
-    { url: 'https://overreacted.io/', tags: ['learning', 'react', 'Dan Abramov'] },
+    { url: 'https://overreacted.io/', tags: ['learning', 'react', 'DanAbramov'] },
     {
         url: 'https://whatthefuck.is/',
         tags: ['learning']
