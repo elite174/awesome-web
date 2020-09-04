@@ -1,28 +1,30 @@
 import React, { FC } from 'react';
-import { css, cx } from 'emotion';
+import { css } from 'emotion';
 
 import Tag from '../Tag';
 
 import { Link as ILink } from '../../data';
 import { ClassNameProps } from '../../typings';
-import { typography } from '../../variables';
+import { typography, device } from '../../variables';
 
 const linkStyles = css`
     display: block;
+    margin-bottom: 8px;
 
-    ${typography.xl}
+    ${typography.l}
 
-    margin-bottom: 24px;
-
-    color: black;
+    color: var(--color-text-primary);
+    transition: color 0.15s ease-out;
 
     &:hover,
     &:active {
-        color: #f02244;
+        color: var(--color-accent);
+    }
+
+    @media ${device.mobileL} {
+        ${typography.m}
     }
 `;
-
-const linkContainerStyles = css``;
 
 const tagRowStyles = css`
     display: flex;
@@ -30,10 +32,22 @@ const tagRowStyles = css`
 `;
 
 const tagStyles = css`
-    margin-right: 8px;
+    margin-right: 12px;
 
     &:last-child {
         margin: 0;
+    }
+`;
+
+const descriptionStyles = css`
+    ${typography.text20}
+
+    margin-bottom: 16px;
+
+    color: var(--color-text-secondary);
+
+    @media ${device.mobileL} {
+        ${typography.text16}
     }
 `;
 
@@ -41,13 +55,14 @@ interface Props extends ClassNameProps {
     readonly link: ILink;
 }
 
-const Link: FC<Props> = ({ link, className = '' }) => (
-    <div className={cx(linkContainerStyles, className)}>
-        <a href={link.url} className={linkStyles}>
-            {link.url.replace(/https?:\/\//, '')}
+const Link: FC<Props> = ({ link: { url, description, tags }, className = '' }) => (
+    <div className={className}>
+        <a href={url} className={linkStyles}>
+            {url.replace(/https?:\/\//, '')}
         </a>
+        <div className={descriptionStyles}>{description}</div>
         <div className={tagRowStyles}>
-            {link.tags?.map((t) => (
+            {tags?.map((t) => (
                 <Tag key={t} className={tagStyles} text={t} />
             ))}
         </div>

@@ -14,7 +14,13 @@ const globalStyles = cssGlobal`
     }
 
     * {
-        font-family: 'Anton', sans-serif;
+        font-family: 'Playfair Display', serif;
+    }
+
+    :root {
+        --color-accent: #176105;
+        --color-text-primary: #121212;
+        --color-text-secondary: #595959;
     }
 `;
 
@@ -26,7 +32,7 @@ const Page: FC<ClassNameProps> = ({ children, className = '' }) => (
     <div className={cx(pageStyles, className)}>
         <Head>
             <link
-                href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+                href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap"
                 rel="stylesheet"
             />
         </Head>

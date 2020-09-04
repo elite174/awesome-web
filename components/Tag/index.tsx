@@ -8,14 +8,14 @@ import { ClassNameProps } from '../../typings';
 const buttonStyles = css`
     background: none;
     border: none;
-    color: #999;
+    color: var(--color-text-secondary);
     cursor: pointer;
     outline: none;
 
     padding: 0;
 
     &:hover {
-        color: #f02244;
+        color: var(--color-accent);
     }
 `;
 

@@ -5,7 +5,11 @@ export interface Link {
 }
 
 export const links: Link[] = [
-    { url: 'https://overreacted.io/', tags: ['learning', 'react', 'DanAbramov'] },
+    {
+        url: 'https://overreacted.io/',
+        tags: ['learning', 'react', 'DanAbramov'],
+        description: 'Personal blog by Dan Abramov.'
+    },
     {
         url: 'https://whatthefuck.is/',
         tags: ['learning']
