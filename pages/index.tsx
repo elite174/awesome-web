@@ -8,7 +8,7 @@ import { links } from '../data';
 import { typography, device } from '../variables';
 import { StoreContext } from '../context';
 
-import searchIcon from '../assets/search.svg';
+import searchIconImage from '../assets/search.svg';
 import leafImage from '../assets/leaf.png';
 
 const pageStyles = css`
@@ -65,6 +65,10 @@ const inputStyles = css`
     ${typography.text20}
 
     width: 100%;
+
+    &:placeholder {
+        color: var(--color-text-secondary);
+    }
 `;
 
 const inputRowStyles = css`
@@ -103,7 +107,7 @@ const footerLinkStyles = css`
     color: var(--color-text-secondary);
 `;
 
-const palmImageStyles = css`
+const leafImageStyles = css`
     position: fixed;
     top: -200px;
     left: 20px;
@@ -141,12 +145,13 @@ export default function Home() {
     return (
         <StoreContext.Provider value={{ dispatch: setTagText }}>
             <Page className={pageStyles}>
-                <img src={leafImage} className={palmImageStyles} />
+                <img src={leafImage} className={leafImageStyles} />
                 <div className={inputRowStyles}>
-                    <img className={imageStyles} src={searchIcon} />
+                    <img className={imageStyles} src={searchIconImage} />
                     <input
                         className={inputStyles}
                         type="text"
+                        placeholder="Enter tags separated by spaces"
                         value={tagText}
                         onChange={onInputChange}
                     />

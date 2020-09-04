@@ -3,6 +3,7 @@ import { Global, css as cssGlobal } from '@emotion/core';
 import { css, cx } from 'emotion';
 
 import Head from 'next/head';
+
 import { ClassNameProps } from '../../typings';
 
 const globalStyles = cssGlobal`

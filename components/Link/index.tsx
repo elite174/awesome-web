@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { memo } from 'react';
 import { css } from 'emotion';
 
 import Tag from '../Tag';
 
 import { Link as ILink } from '../../data';
+
 import { ClassNameProps } from '../../typings';
 import { typography, device } from '../../variables';
 
@@ -55,7 +56,7 @@ interface Props extends ClassNameProps {
     readonly link: ILink;
 }
 
-const Link: FC<Props> = ({ link: { url, description, tags }, className = '' }) => (
+const Link = memo<Props>(({ link: { url, description, tags }, className = '' }) => (
     <div className={className}>
         <a href={url} className={linkStyles}>
             {url.replace(/https?:\/\//, '')}
@@ -67,6 +68,6 @@ const Link: FC<Props> = ({ link: { url, description, tags }, className = '' }) =
             ))}
         </div>
     </div>
-);
+));
 
 export default Link;
