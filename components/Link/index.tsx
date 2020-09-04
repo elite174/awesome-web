@@ -15,6 +15,8 @@ const linkStyles = css`
     ${typography.l}
 
     color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: color 0.15s ease-out;
 
     &:hover,

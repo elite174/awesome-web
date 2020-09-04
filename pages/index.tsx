@@ -138,9 +138,15 @@ export default function Home() {
     );
 
     const splittedTags = tagText.trim().toLocaleLowerCase().split(' ');
-    const filteredLinks = links.filter((l) =>
-        l.tags?.some((t) => splittedTags.some((tag) => t.toLocaleLowerCase().includes(tag)))
-    );
+    console.log(splittedTags);
+    const filteredLinks =
+        splittedTags.length > 0
+            ? links.filter((l) =>
+                  splittedTags.every((t) =>
+                      l.tags?.some((tag) => tag.toLocaleLowerCase().includes(t))
+                  )
+              )
+            : links;
 
     return (
         <StoreContext.Provider value={{ dispatch: setTagText }}>
