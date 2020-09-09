@@ -53,6 +53,11 @@ const Page: FC<ClassNameProps> = ({ children, className = '' }) => (
                 href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap"
                 rel="stylesheet"
             />
+            <script
+                data-ad-client="ca-pub-6410994282681966"
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            ></script>
         </Head>
         <Global styles={globalStyles} />
         {children}
