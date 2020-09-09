@@ -69,6 +69,10 @@ const inputStyles = css`
     &:placeholder {
         color: var(--color-text-secondary);
     }
+
+    @media ${device.mobileL} {
+        ${typography.text16}
+    }
 `;
 
 const inputRowStyles = css`
@@ -151,9 +155,9 @@ export default function Home() {
     return (
         <StoreContext.Provider value={{ dispatch: setTagText }}>
             <Page className={pageStyles}>
-                <img src={leafImage} className={leafImageStyles} />
+                <img src={leafImage} className={leafImageStyles} alt="Palm leaf" />
                 <div className={inputRowStyles}>
-                    <img className={imageStyles} src={searchIconImage} />
+                    <img className={imageStyles} src={searchIconImage} alt="Search icon" />
                     <input
                         className={inputStyles}
                         type="text"
