@@ -6,6 +6,11 @@ export interface Link {
 
 export const links: Link[] = [
     {
+        url: 'https://realfavicongenerator.net/',
+        tags: ['favicon', 'generator', 'tool'],
+        description: 'Favicon Generator'
+    },
+    {
         url: 'https://overreacted.io/',
         tags: ['learning', 'react', 'DanAbramov'],
         description: 'Personal blog by Dan Abramov'
